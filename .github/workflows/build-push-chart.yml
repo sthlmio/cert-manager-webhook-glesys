@@ -61,7 +61,7 @@ jobs:
 
       - name: Helm Push
         env:
-          CHART_PACKAGE: ${{ steps.helm_package.outputs.package_name }}
+          CHART_PACKAGE: /charts/${{ steps.helm_package.outputs.package_name }}
           OCI_REGISTRY: ghcr.io/${{ github.repository_owner }}
           CHART_NAME: ${{ steps.chart_info.outputs.chart_name }}
         run: |
