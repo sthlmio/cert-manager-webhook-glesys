@@ -94,18 +94,15 @@ func (c *glesysDNSProviderSolver) Present(ch *v1alpha1.ChallengeRequest) error {
 
 	domain, host := prepareDomainAndHost(ch.ResolvedZone, ch.ResolvedFQDN)
 
-	// Kontrollera om recorden redan finns
 	recordID, err := c.findRecord(&cfg, apiKey, domain, host, "TXT", ch.Key)
 	if err != nil {
 		return err
 	}
 
-	// Om recorden redan finns behöver vi inte göra något
 	if recordID != 0 {
 		return nil
 	}
 
-	// Skapa ny record
 	addBody := map[string]string{
 		"domainname": domain,
 		"host":       host,
@@ -141,17 +138,15 @@ func (c *glesysDNSProviderSolver) CleanUp(ch *v1alpha1.ChallengeRequest) error {
 
 	domain, host := prepareDomainAndHost(ch.ResolvedZone, ch.ResolvedFQDN)
 
-	// Hitta record ID som matchar exakt vår TXT-record
 	recordID, err := c.findRecord(&cfg, apiKey, domain, host, "TXT", ch.Key)
 	if err != nil {
 		return err
 	}
 
 	if recordID == 0 {
-		return nil // Record fanns inte
+		return nil
 	}
 
-	// Ta bort recorden
 	deleteBody := map[string]string{
 		"recordid": fmt.Sprintf("%d", recordID),
 	}
@@ -188,12 +183,13 @@ func (c *glesysDNSProviderSolver) Initialize(kubeClientConfig *rest.Config, stop
 // the typed config struct.
 func loadConfig(cfgJSON *extapi.JSON) (glesysDNSProviderConfig, error) {
 	cfg := glesysDNSProviderConfig{
-		APIURL: "https://api.glesys.com", // Set default API URL
+		APIURL: "https://api.glesys.com",
 	}
-	// handle the 'base case' where no configuration has been provided
+
 	if cfgJSON == nil {
 		return cfg, nil
 	}
+
 	if err := json.Unmarshal(cfgJSON.Raw, &cfg); err != nil {
 		return cfg, fmt.Errorf("error decoding solver config: %v", err)
 	}
