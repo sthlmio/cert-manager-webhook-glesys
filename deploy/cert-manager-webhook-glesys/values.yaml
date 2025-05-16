@@ -8,13 +8,15 @@
 # here is recommended.
 groupName: acme.sthlm.io
 
+apiKeySecretName: glesys-api-secret
+
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
 
 image:
   repository: ghcr.io/sthlmio/cert-manager-webhook-glesys
-  tag: latest
+  tag: 0.1.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
