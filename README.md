@@ -1,13 +1,13 @@
-# cert-manager webhook for GleSYS DNS
+# cert-manager webhook for Glesys DNS
 
-cert-manager webhook for GleSYS DNS is a ACME [webhook](https://cert-manager.io/docs/configuration/acme/dns01/webhook/) for [cert-manager](https://cert-manager.io/) allowing users to use [GleSYS DNS](https://glesys.se/tjanster/domaner) for DNS01 challenges.
+cert-manager webhook for Glesys DNS is a ACME [webhook](https://cert-manager.io/docs/configuration/acme/dns01/webhook/) for [cert-manager](https://cert-manager.io/) allowing users to use [Glesys DNS](https://glesys.se/tjanster/domaner) for DNS01 challenges.
 
 ## Getting started
 
 ### Prerequisites
 
-- A [GleSYS API key](https://cloud.glesys.com/api-access)
-- A valid domain configured on GleSYS DNS
+- A [Glesys API key](https://cloud.glesys.com/api-access)
+- A valid domain configured on Glesys DNS
 - A Kubernetes cluster (v1.32+ recommended)
 - cert-manager [deployed](https://cert-manager.io/docs/in7stallation/) on the cluster
 
@@ -25,7 +25,7 @@ helm install cert-manager-webhook-glesys \
 
 ### Secret
 
-Containing the GleSYS API key
+Containing the Glesys API key
 
 ```yaml
 apiVersion: v1
