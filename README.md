@@ -16,8 +16,9 @@ cert-manager webhook for GleSYS DNS is a ACME [webhook](https://cert-manager.io/
 ```
 helm install cert-manager-webhook-glesys \
   oci://ghcr.io/sthlmio/cert-manager-webhook-glesys \
-  --version 0.1.0 \
-  --set groupName=acme.sthlm.io
+  --version 0.2.0 \
+  --set groupName=acme.sthlm.io \
+  --set apiKeySecretName=glesys-api-secret
 ```
 
 ### How to use it
@@ -60,6 +61,6 @@ spec:
             config:
               project: <glesys project id>
               apiURL: https://api.glesys.com
-              secretKeySecretRef:
+              apiKeySecretRef:
                 name: glesys-api-secret
 ```
