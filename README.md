@@ -49,8 +49,7 @@ metadata:
 spec:
   acme:
     email: <my-user@example.com>
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    # server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: glesys-issuer-account-key
     solvers:
@@ -63,4 +62,5 @@ spec:
               apiURL: https://api.glesys.com
               apiKeySecretRef:
                 name: glesys-api-secret
+                key: key
 ```
