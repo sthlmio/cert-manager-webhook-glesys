@@ -77,9 +77,9 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: |
             # For v*.*.* tags (semver) - both stable and pre-release
-            type=semver,pattern=v{{version}},enable=${{startsWith(github.ref, 'refs/tags/v')}}
-            type=semver,pattern=v{{major}}.{{minor}},enable=${{startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
-            type=semver,pattern=v{{major}},enable=${{startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
+            type=semver,pattern={{version}},enable=${{startsWith(github.ref, 'refs/tags/v')}}
+            type=semver,pattern={{major}}.{{minor}},enable=${{startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
+            type=semver,pattern={{major}},enable=${{startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
 
             # For all pushes/PRs
             type=sha
