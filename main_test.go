@@ -1,7 +1,6 @@
 package main
 
 import (
-	"math/rand"
 	"os"
 	"testing"
 	"time"
@@ -14,23 +13,11 @@ var (
 	manifestPath = os.Getenv("TEST_MANIFEST_PATH")
 )
 
-func generateRandomHex(n int) string {
-	const hexChars = "0123456789abcdef"
-	result := make([]byte, n)
-	for i := range result {
-		result[i] = hexChars[rand.Intn(len(hexChars))]
-	}
-	return string(result)
-}
-
 func TestRunsSuite(t *testing.T) {
 	solver := &glesysDNSProviderSolver{}
 
-	fqdn := generateRandomHex(20) + "." + zone
-
 	fixture := acmetest.NewFixture(solver,
 		acmetest.SetResolvedZone(zone),
-		acmetest.SetResolvedFQDN(fqdn),
 		acmetest.SetAllowAmbientCredentials(false),
 		acmetest.SetManifestPath(manifestPath),
 		// acmetest.SetBinariesPath("_test/kubebuilder/bin"),
