@@ -1,6 +1,6 @@
 # cert-manager webhook for Glesys DNS
 
-cert-manager webhook for Glesys DNS is a ACME [webhook](https://cert-manager.io/docs/configuration/acme/dns01/webhook/) for [cert-manager](https://cert-manager.io/) allowing users to use [Glesys DNS](https://glesys.se/tjanster/domaner) for DNS01 challenges.
+cert-manager webhook for Glesys DNS is an ACME [webhook](https://cert-manager.io/docs/configuration/acme/dns01/webhook/) for [cert-manager](https://cert-manager.io/) allowing users to use [Glesys DNS](https://glesys.se/tjanster/domaner) for DNS01 challenges.
 
 ## Getting started
 
